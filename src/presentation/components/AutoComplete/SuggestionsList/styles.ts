@@ -3,17 +3,27 @@ type SuggestionsProps = {
 };
 
 export const noOptions = `
-  text-black
+  w-72
+  border-2
+  border-purple-500
+  text-left
+  p-2
 `
 
 export const suggestionsList = `
-  text-black
+  w-72
+  border-2
+  border-purple-500
 `
 
 export const suggestions = ({ suggestionActive }: SuggestionsProps) => `
-  w-4
-
-  ${suggestionActive ? 'mr-2' : ''}
+  w-100
+  text-left
+  hover:bg-purple-500
+  p-2
+  ${suggestionActive ? '' : ''}
 `;
 
-
+export const highlightedString = `
+  bg-green-500
+`

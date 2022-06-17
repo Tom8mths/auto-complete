@@ -12,7 +12,7 @@ export default function AutoComplete({ suggestions }: AutoCompleteProps) {
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [input, setInput] = useState("");
 
-  const onChange = (e: any) => {
+  const searchTerm = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const userInput = e.target.value;
 
     const unLinked = suggestions.filter(
@@ -26,27 +26,38 @@ export default function AutoComplete({ suggestions }: AutoCompleteProps) {
     setShowSuggestions(true);
   };
 
-  const onClick = (e: any) => {
+  const selectSuggestion = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFilteredSuggestions([]);
     setInput(e.target.innerText);
     setActiveSuggestionIndex(0);
     setShowSuggestions(false);
   };
 
+  const onKeyDown = (key: React.KeyboardEvent<HTMLDivElement>) => {
+    if (input !== "") {
+      if (key.code === "Enter" || key.code === "Tab") {
+        setInput(filteredSuggestions[activeSuggestionIndex]);
+        setFilteredSuggestions([]);
+      }
+    }
+  };
+
   return (
     <>
       <input
+        maxLength={50}
         type="text"
         className={S.autoComplete}
-        onChange={onChange}
-        // onKeyDown={onKeyDown}
+        onChange={searchTerm}
+        onKeyDown={onKeyDown}
         value={input}
       />
       {showSuggestions && input && (
         <SuggestionsListComponent
           filteredSuggestions={filteredSuggestions}
           activeSuggestionIndex={activeSuggestionIndex}
-          onClick={() => onClick}
+          onClick={selectSuggestion}
+          searchWord={input}
         />
       )}
     </>

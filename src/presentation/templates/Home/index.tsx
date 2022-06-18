@@ -9,9 +9,9 @@ export default function Home() {
       <div className="flex flex-col items-center justify-center h-screen-menu w-full py-2">
         <main className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center">
           <Text>Welcome!</Text>
-          <Button color="purple">
-            <Link to="/autoComplete">Go to auto-complete!</Link>
-          </Button>
+          <Link to="/movies-page">
+            <Button color="purple">Go to auto-complete!</Button>
+          </Link>
         </main>
       </div>
     </Base>

@@ -2,11 +2,11 @@ import { lazy, Suspense } from "react";
 import { Routes as Router, Route, BrowserRouter } from "react-router-dom";
 
 const Home = lazy(() => import("../../templates/Home"));
-const AutoComplete = lazy(() => import("../../templates/AutoCompletePage"));
+const MoviesPage = lazy(() => import("../../../pages/movies"));
 
 export const routesPaths = {
   home: "/",
-  autoComplete: "/autoComplete",
+  moviesPage: "/movies-page",
 };
 
 const Routes = () => {
@@ -17,7 +17,7 @@ const Routes = () => {
           <Route path={routesPaths.home} element={<Home />} />
         </Router>
         <Router>
-          <Route path={routesPaths.autoComplete} element={<AutoComplete />} />
+          <Route path={routesPaths.moviesPage} element={<MoviesPage />} />
         </Router>
       </BrowserRouter>
     </Suspense>

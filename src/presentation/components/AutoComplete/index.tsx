@@ -4,9 +4,13 @@ import * as S from "./styles";
 
 export type AutoCompleteProps = {
   suggestions: string[];
+  setMovie: (movie: string) => void;
 };
 
-export default function AutoComplete({ suggestions }: AutoCompleteProps) {
+export default function AutoComplete({
+  suggestions,
+  setMovie,
+}: AutoCompleteProps) {
   const [filteredSuggestions, setFilteredSuggestions] = useState<string[]>([]);
   const [activeSuggestionIndex, setActiveSuggestionIndex] = useState(0);
   const [showSuggestions, setShowSuggestions] = useState(false);
@@ -26,20 +30,30 @@ export default function AutoComplete({ suggestions }: AutoCompleteProps) {
     setShowSuggestions(true);
   };
 
+  const onKeyDown = (key: React.KeyboardEvent<HTMLDivElement>) => {
+    if (key.code === "Enter") {
+      setActiveSuggestionIndex(0);
+      setShowSuggestions(false);
+      setInput(filteredSuggestions[activeSuggestionIndex]);
+    } else if (key.code === "ArrowUp") {
+      if (activeSuggestionIndex === 0) {
+        return;
+      }
+      setActiveSuggestionIndex(activeSuggestionIndex - 1);
+    } else if (key.code === "ArrowDown") {
+      if (activeSuggestionIndex + 1 === filteredSuggestions.length) {
+        return;
+      }
+      setActiveSuggestionIndex(activeSuggestionIndex + 1);
+    }
+  };
+
   const selectSuggestion = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFilteredSuggestions([]);
     setInput(e.target.innerText);
+    setMovie(e.target.innerText);
     setActiveSuggestionIndex(0);
     setShowSuggestions(false);
-  };
-
-  const onKeyDown = (key: React.KeyboardEvent<HTMLDivElement>) => {
-    if (input !== "") {
-      if (key.code === "Enter" || key.code === "Tab") {
-        setInput(filteredSuggestions[activeSuggestionIndex]);
-        setFilteredSuggestions([]);
-      }
-    }
   };
 
   return (

@@ -14,6 +14,8 @@ export const suggestionsList = `
   w-72
   border-2
   border-purple-500
+  max-h-96
+  overflow-y-scroll
 `
 
 export const suggestions = ({ suggestionActive }: SuggestionsProps) => `
@@ -21,7 +23,7 @@ export const suggestions = ({ suggestionActive }: SuggestionsProps) => `
   text-left
   hover:bg-purple-500
   p-2
-  ${suggestionActive ? '' : ''}
+  ${suggestionActive ? 'bg-purple-500' : ''}
 `;
 
 export const highlightedString = `

@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Text /> should render the heading 1`] = `
+<div>
+  <p
+    class="
+  text-base
+  text-white
+ "
+  >
+    My awesome text
+  </p>
+</div>
+`;

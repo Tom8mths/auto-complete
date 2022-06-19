@@ -15,6 +15,8 @@ export const suggestionsList = `
   border-2
   border-purple-500
   max-h-96
+  cursor-pointer
+  select-none
   overflow-y-scroll
 `
 

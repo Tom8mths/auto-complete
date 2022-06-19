@@ -15,7 +15,7 @@ export default function SuggestionsListComponent({
   searchWord,
 }: filteredSuggestionsProps) {
   return filteredSuggestions.length ? (
-    <ul className={S.suggestionsList}>
+    <ul className={S.suggestionsList} data-testid="list">
       {filteredSuggestions.map((suggestion, index) => {
         const startString = suggestion.substr(
           0,

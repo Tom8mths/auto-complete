@@ -4,12 +4,12 @@ import * as S from "./styles";
 
 export type AutoCompleteProps = {
   suggestions: string[];
-  setMovie: (movie: string) => void;
+  placeholder?: string;
 };
 
 export default function AutoComplete({
   suggestions,
-  setMovie,
+  placeholder,
 }: AutoCompleteProps) {
   const [filteredSuggestions, setFilteredSuggestions] = useState<string[]>([]);
   const [activeSuggestionIndex, setActiveSuggestionIndex] = useState(0);
@@ -31,7 +31,7 @@ export default function AutoComplete({
   };
 
   const onKeyDown = (key: React.KeyboardEvent<HTMLDivElement>) => {
-    if (key.code === "Enter") {
+    if (key.code === "Enter" && input !== "") {
       setActiveSuggestionIndex(0);
       setShowSuggestions(false);
       setInput(filteredSuggestions[activeSuggestionIndex]);
@@ -51,7 +51,6 @@ export default function AutoComplete({
   const selectSuggestion = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFilteredSuggestions([]);
     setInput(e.target.innerText);
-    setMovie(e.target.innerText);
     setActiveSuggestionIndex(0);
     setShowSuggestions(false);
   };
@@ -65,6 +64,7 @@ export default function AutoComplete({
         onChange={searchTerm}
         onKeyDown={onKeyDown}
         value={input}
+        placeholder={placeholder}
       />
       {showSuggestions && input && (
         <SuggestionsListComponent

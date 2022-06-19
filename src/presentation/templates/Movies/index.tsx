@@ -35,6 +35,7 @@ export default function MoviesTemplate() {
           <AutoComplete
             setMovie={setSelectedMovie}
             suggestions={moviesList}
+            placeholder="Movie"
           ></AutoComplete>
           <Text>{selectedMovie}</Text>
         </main>

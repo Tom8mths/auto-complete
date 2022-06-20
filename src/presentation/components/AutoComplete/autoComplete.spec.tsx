@@ -109,8 +109,8 @@ describe("<AutoComplete />", () => {
     fireEvent.keyDown(input, {
       key: "ArrowUp",
       code: "ArrowUp",
-      keyCode: 40,
-      charCode: 40,
+      keyCode: 38,
+      charCode: 38,
     });
 
     fireEvent.keyDown(input, {

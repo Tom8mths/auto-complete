@@ -5,7 +5,7 @@ To run the project in development mode, first install the dependencies:
 ```bash
 yarn install
 ```
-Then, run the commando:
+Then, run the command:
 ```bash
 yarn start
 ```

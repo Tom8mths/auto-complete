@@ -1,3 +1,4 @@
+import React from "react";
 import * as S from "./styles";
 import Text from "../../../components/Text";
 
@@ -6,6 +7,7 @@ export type filteredSuggestionsProps = {
   activeSuggestionIndex: number;
   searchWord: string;
   onClick?: (e: any) => void;
+  itemRef: any;
 };
 
 export default function SuggestionsListComponent({
@@ -13,6 +15,7 @@ export default function SuggestionsListComponent({
   activeSuggestionIndex,
   onClick,
   searchWord,
+  itemRef,
 }: filteredSuggestionsProps) {
   return filteredSuggestions.length ? (
     <ul className={S.suggestionsList} data-testid="list">
@@ -36,6 +39,9 @@ export default function SuggestionsListComponent({
             })}
             key={suggestion}
             onClick={onClick}
+            ref={(ref) => {
+              itemRef.current = { ...itemRef.current, [index]: ref };
+            }}
           >
             <Text>
               {startString}

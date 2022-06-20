@@ -13,7 +13,6 @@ export type MoviesTemplateProps = {
 
 export default function MoviesTemplate() {
   const [moviesList, setMoviesList] = useState<string[]>([]);
-  const [selectedMovie, setSelectedMovie] = useState<string>("");
 
   useEffect(() => {
     async function getMovies() {
@@ -33,11 +32,9 @@ export default function MoviesTemplate() {
           </Link>
           <Text className="mt-10">Search a movie!</Text>
           <AutoComplete
-            setMovie={setSelectedMovie}
             suggestions={moviesList}
             placeholder="Movie"
           ></AutoComplete>
-          <Text>{selectedMovie}</Text>
         </main>
       </div>
     </Base>

@@ -15,7 +15,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
-And last but not least, the api is running in json server, so we need to run:
+After that, to run the api:
 ```bash
 yarn api
 ```
